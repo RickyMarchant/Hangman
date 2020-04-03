@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity2"
+
+    android:background="@drawable/forest_take3">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:layout_marginHorizontal="5dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp">
+
+
+        <ImageView
+
+            android:id="@+id/battery"
+            android:layout_width="35dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/battery_animation"
+             />
+
+        <ImageView
+            android:id="@+id/knightImage"
+            android:layout_width="132dp"
+            android:layout_height="110dp"
+            android:layout_toRightOf="@id/battery"
+            android:foregroundGravity="bottom"
+            android:background="@drawable/knight_idle"
+
+            />
+
+
+        <ImageView
+            android:id="@+id/ogreImage"
+            android:layout_width="132dp"
+            android:layout_height="110dp"
+            android:layout_marginLeft="-9dp"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/knightImage"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ogre_attack1"
+            android:baselineAlignBottom="true"
+
+
+            android:foregroundGravity="bottom" />
+
+        <ImageView
+            android:id="@+id/platform"
+            android:layout_width="350dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/knightImage"
+
+            android:layout_centerInParent="true"
+            android:background="@drawable/platform"
+            android:foregroundGravity="center"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.233" />
+
+        <com.ricky.hangman.AnswerResultsArea
+            android:id="@+id/answerResultsArea"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/platform"
+            android:layout_centerHorizontal="true"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.405" />
+
+        <Button
+            android:id="@+id/hintBox"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginLeft="25dp"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="HINT?"
+            android:layout_below="@id/answerResultsArea"
+            />
+        <ImageView
+            android:id="@+id/checkmarksBox"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:src="@drawable/checkmark3"
+            android:layout_toEndOf="@id/hintBox"
+            android:layout_below="@id/answerResultsArea"
+            android:scaleType="fitXY"
+            />
+        <ImageView
+            android:id="@+id/checkmarksBox2"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:src="@drawable/checkmark3"
+
+            android:layout_toEndOf="@id/checkmarksBox"
+            android:layout_below="@id/answerResultsArea"
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:id="@+id/clueBoxAnswer"
+            android:layout_width="220dp"
+            android:layout_height="70dp"
+            android:layout_toEndOf="@id/checkmarksBox2"
+            android:layout_below="@id/answerResultsArea"
+            android:text=""
+            android:textColor="#ffff9100"
+            android:background="#ffff9100"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:gravity="center"/>
+
+        <com.ricky.hangman.MyKeyboard
+            android:id="@+id/keyboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hintBox"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="-21dp"
+            android:layout_marginBottom="26dp"
+            android:foregroundGravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="1.5dp"
+            android:paddingRight="1.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.611" />
+
+    </RelativeLayout>
+
+
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_margin="40dp"
+        android:background="@color/colorPrimaryDark"
+        android:maxLength="1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <Button
+        android:id="@+id/backToHomeScreenButton"
+        android:layout_width="133dp"
+        android:layout_height="68dp"
+        android:text="Back to HomeScreen"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
+
+
+    />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

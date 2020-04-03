@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:text="TEST TEST"
+    android:textSize="24sp"
+    android:padding="4dp"
+    android:drawableRight="@drawable/dropdown_arrow"
+
+
+
+
+    android:textColor="@android:color/white"
+    android:layout_height="wrap_content"
+
+    >
+
+</CheckedTextView>

@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Hangman By Ricky</string>
+
+    <string name="openingQuestion">What brings you here? </string>
+    <string-array name="possibleSelects">
+        <item> Joke </item>
+        <item> Programming Joke </item>
+        <item> Animal Fact </item>
+        <item> Dwight\'s Bear Fact</item>
+    </string-array>
+
+
+    <string name="submitB">Submit </string>
+    <string name ="creditWhereCreditIsDue">
+        Hangman by Ricky was created by Ricky Marchant.
+        \nWith some help along the way:
+        \n
+        \nSOUNDS-
+        \nhttps://freesound.org/people/tim.kahn/sounds/336997/
+        \nhttps://freesound.org/people/lchapman1980/sounds/439894/
+        \nhttps://freesound.org/people/Raclure/sounds/483598/
+        \nhttps://www.youtube.com/watch?v=lbuW6zIuUo4
+        \n
+        \nMUSIC-
+        \nSappheriros- Dawn: https://soundcloud.com/sappheirosmusic
+        \n
+        \nIMAGES-
+        \nhttps://mobilegamegraphics.itch.io/adventure-game-kit
+        \nhttps://unsplash.com/@nathananderson
+        \nhttps://itch.io/queue/c/299944/fantasy-game-character?game_id=184800
+        \n
+        \nANIMATIONS-
+        \nhttps://github.com/daimajia/AndroidViewAnimations/blob/master/README.md
+
+    </string>
+
+</resources>
