@@ -1,9 +1,9 @@
 package com.ricky.hangman;
 
+//Hangman by Ricky
 //Created by Ricky Marchant.
 //March 28, 2020
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -15,8 +15,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -25,25 +23,28 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     private TextView title;
-private Spinner jokeTypeSelectSpinner;
-private Button submitButton;
-private TextView setupBox;
-private RequestQueue mQueue;
-private TextView punchlineBox;
-private Button musicButton;
-public static MediaPlayer backgroundMusic;
-private Button openHangmanButton;
-private Button openCreditsButton;
+    private Spinner jokeTypeSelectSpinner;
+    private Button submitButton;
+    private TextView setupBox;
+    private RequestQueue mQueue;
+    private TextView punchlineBox;
+    private Button musicButton;
+    public static MediaPlayer backgroundMusic;
+    private Button openHangmanButton;
+    private Button openCreditsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -69,7 +70,6 @@ private Button openCreditsButton;
             {
                 musicButton.setText("MUSIC: ON");
                 musicButton.setTextColor(Color.parseColor("#000000"));
-
             }
 
             else
@@ -116,15 +116,8 @@ public void toggleMusic(View v)
         backgroundMusic.start();
         musicButton.setText("MUSIC: ON");
         musicButton.setTextColor(Color.parseColor("#000000"));
-
     }
-
-
-
-
 }
-
-
     private void openCreditsPage()
     {
         Intent intent = new Intent(this, CreditsPage.class);
@@ -148,35 +141,58 @@ public void toggleMusic(View v)
             public void onClick(View v) {
                 setupBox.setText("");
                 punchlineBox.setText("");
-                jsonParse();
+                //jsonParse();
+                if (jokeTypeSelectSpinner.getSelectedItem().equals("Joke"))
+                {
+                    JokesData.retrieveGeneralJoke();
+
+                }
+                else if (jokeTypeSelectSpinner.getSelectedItem().equals("Programming Joke"))
+                {
+                    JokesData.retrieveProgrammingJoke();
+                }
+                else if (jokeTypeSelectSpinner.getSelectedItem().equals("Animal Fact"))
+                {
+                    JokesData.retrieveAnimalFact();
+                }
+                else if (jokeTypeSelectSpinner.getSelectedItem().equals("Dwight's Bear Fact"))
+                {
+                    System.out.println("GETTING HERE?");
+                    JokesData.retrieveBearFact();
+                }
+                else
+                {
+                    setupBox.append("BROKEN LINK");
+                    punchlineBox.append("GAH");
+                }
+                setupBox.append(JokesData.jokeSetup);
+                punchlineBox.append(JokesData.jokePunchline);
+
+                YoYo.with(Techniques.ZoomIn).duration(1700).playOn(setupBox);
+
+                YoYo.with(Techniques.ZoomIn).duration(1700).playOn(punchlineBox);
                 Toast.makeText(MainActivity.this,
                         "OnClickListener : " +
                                 "\nSpinner 1 : " + (jokeTypeSelectSpinner.getSelectedItem()),
 
                         Toast.LENGTH_SHORT).show();
-
-                //**Note: resultsBox in resources. Called resultbox here.
-
-
             }
         }));
 
     }
 
+    //String url = "https://gist.githubusercontent.com/RickyMarchant/a5dfce44f89986b7ad98b9b275cc77b3/raw/72fe436a0d622f654b6c655152e278f386cd4935/jokes_facts.json";
     public void jsonParse() {
-
-
-        //String url = "https://api.myjson.com/bins/9o2u4";
-        //Site has been down for over a week. String url = "https://api.myjson.com/bins/1f50j4";
-        String url = "https://jsonblob.com/90e66195-7567-11ea-9538-ebde39315c4b";
-
+        //Site has been down for over a week.
+        //Use alternative method to get JSON.
+        String url = "https://gist.githubusercontent.com/RickyMarchant/a5dfce44f89986b7ad98b9b275cc77b3/raw/72fe436a0d622f654b6c655152e278f386cd4935/jokes_facts.json";
+       // String url = "https://api.myjson.com/bins/1f50j4";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
                     String jsonStringSelected = (String)jokeTypeSelectSpinner.getSelectedItem();
                     JSONArray json = response.getJSONArray(jsonStringSelected);
-
                     Random rand = new Random();
                     JSONObject joke = json.getJSONObject(rand.nextInt(json.length()));
                     String setup = joke.getString("setup");

@@ -11,7 +11,6 @@ import android.util.AttributeSet;
 public class AnswerResultsArea extends LinearLayout
 {
     public TextView firstLetterOfAnswer, secondLetterOfAnswer, thirdLetterOfAnswer, fourthLetterOfAnswer, fifthLetterOfAnswer,sixthLetterOfAnswer, seventhLetterOfAnswer;
-
     private SparseArray < String> keyValues = new SparseArray<>();
     public AnswerResultsArea(Context context)
     {

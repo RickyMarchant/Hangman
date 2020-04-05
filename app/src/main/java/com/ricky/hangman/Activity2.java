@@ -3,8 +3,6 @@ package com.ricky.hangman;
 //Created by Ricky Marchant.
 //March 28, 2020
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,14 +14,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Activity2 extends AppCompatActivity
 {
-
     private Button homeScreenButton;
     private String password = Guess.setPassword();
     private char[] answerArray = new char[password.length()];
@@ -43,7 +39,7 @@ public class Activity2 extends AppCompatActivity
     private int hintsGiven = 0;
     public static Character revealThisLetter = 'z';
 
-
+    //initialize all the buttons,layouts, etc.
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -77,9 +73,8 @@ public class Activity2 extends AppCompatActivity
         keyboard = findViewById(R.id.keyboard);
         answerResultsArea = findViewById(R.id.answerResultsArea);
         initalizeLayout();
-
     }
-
+    //Now doesn't reveal hints on last letter applicable.
     private void revealHint()
     {
         cloud.setBackgroundResource(0);
@@ -92,11 +87,8 @@ public class Activity2 extends AppCompatActivity
             checkmark2.setImageResource(R.drawable.block_logo);
             revealLetter();
             hintButton.setEnabled(false);
-
         }
-
         hintsGiven++;
-
     }
 
 
@@ -312,8 +304,6 @@ public class Activity2 extends AppCompatActivity
         knight.setBackgroundResource(R.drawable.knight_attack1);
         ImageView ogre = findViewById(R.id.ogreImage);
         ogre.setBackgroundResource(R.drawable.ogre_attack1);
-
-
     }
 
     private void breakUpAnswerIntoArray()
