@@ -141,7 +141,7 @@ public void toggleMusic(View v)
             public void onClick(View v) {
                 setupBox.setText("");
                 punchlineBox.setText("");
-                //jsonParse();
+                //jsonParse(); Removed temporarily since myJSON.com is down. Alternative is below.
                 if (jokeTypeSelectSpinner.getSelectedItem().equals("Joke"))
                 {
                     JokesData.retrieveGeneralJoke();
@@ -157,13 +157,12 @@ public void toggleMusic(View v)
                 }
                 else if (jokeTypeSelectSpinner.getSelectedItem().equals("Dwight's Bear Fact"))
                 {
-                    System.out.println("GETTING HERE?");
                     JokesData.retrieveBearFact();
                 }
                 else
                 {
-                    setupBox.append("BROKEN LINK");
-                    punchlineBox.append("GAH");
+                    setupBox.append("WOOPS. Something went wrong.");
+                    punchlineBox.append("Sorry!");
                 }
                 setupBox.append(JokesData.jokeSetup);
                 punchlineBox.append(JokesData.jokePunchline);
@@ -181,10 +180,11 @@ public void toggleMusic(View v)
 
     }
 
-    //String url = "https://gist.githubusercontent.com/RickyMarchant/a5dfce44f89986b7ad98b9b275cc77b3/raw/72fe436a0d622f654b6c655152e278f386cd4935/jokes_facts.json";
+
     public void jsonParse() {
         //Site has been down for over a week.
         //Use alternative method to get JSON.
+
         String url = "https://gist.githubusercontent.com/RickyMarchant/a5dfce44f89986b7ad98b9b275cc77b3/raw/72fe436a0d622f654b6c655152e278f386cd4935/jokes_facts.json";
        // String url = "https://api.myjson.com/bins/1f50j4";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
